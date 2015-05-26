@@ -1,0 +1,12 @@
+## Sample config file 0.1
+## Made by Johan De Jesus
+
+## Format:
+## key=value
+
+## Use as many comments and endlines as you want.
+self_name=somename
+mysql_server=localhost
+mysql_port=8880
+mysql_username=user
+mysql_password=password
