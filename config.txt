@@ -5,7 +5,7 @@
 ## key=value
 
 ## Use as many comments and endlines as you want.
-self_name=somename
+self_name=jdm
 mysql_server=localhost
 mysql_port=8880
 mysql_username=user

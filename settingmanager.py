@@ -2,6 +2,7 @@
 # Simple configuration 
 # Made by Johan De Jesus
 
+import os
 ## File holding the settings. 
 configurationFile = "config.txt";
 
@@ -24,7 +25,7 @@ def loadConfiguration():
                         optionvalue = line.split('=')[1].strip('\n');
                         arrDict[optionkey] = optionvalue;
     except IOError:
-        print("IOError. Check your configuration file.")
+        print("Error while reading the specified file. Check your configuration file.")
                 
 ## Returns the value of the specified key.
 ## If value does not exist, function returns ""
@@ -35,6 +36,35 @@ def opt(key):
         return ""
 
 
+
+##Saves configuration
+def saveConfiguration():
+    #debugging reasons
+    configFile = "config2.txt"
+    try:
+        with open(configurationFile,'r') as optionFile:
+            with open(configFile,'w') as saveFile:
+                for line in optionFile:
+                    if ((line[0] != "#") and ("=" in line)):
+                        key = line.split("=")[0]
+                        buf = key+"="+opt(key)+"\n"
+                        saveFile.write(buf)
+                    else:
+                        saveFile.write(line)
+
+    except Exception as err:
+        print("Error: "+err)
+
+    os.remove(configurationFile)
+    os.rename(configFile,configurationFile)
+        
+                        
+                    
+                
+                
+
+    
+
             
 ## End
 
@@ -42,6 +72,4 @@ def opt(key):
 ## Script begins beyond this point
 
 loadConfiguration();
-opt("hi")
-
 
